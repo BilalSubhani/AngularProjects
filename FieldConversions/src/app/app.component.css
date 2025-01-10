@@ -55,6 +55,8 @@ html, body {
 
 .sidenav ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .sidenav a {

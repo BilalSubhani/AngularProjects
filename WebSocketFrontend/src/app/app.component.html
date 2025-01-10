@@ -1,0 +1,12 @@
+<app-child />
+
+<div class="button-container">
+  <button (click)="connectToSocket()" class="btn connect-btn">Connect Parent to Socket</button>
+</div>
+
+<div class="input-container">
+  <input type="text" #inputEl class="input-field" placeholder="Type your message here..." />
+  <button (click)="onSubmit(inputEl)" class="btn send-btn">Send Message</button>
+</div>
+
+<router-outlet></router-outlet>

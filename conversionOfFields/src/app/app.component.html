@@ -1,0 +1,14 @@
+<button class="sidenav-toggle" (click)="toggleSidenav()">☰ {{ action }} Sidenav</button>
+
+<div class="sidenav" [class.open]="isSidenavOpen">
+  <ul>
+    <li><a (click)="scrollTo('child')">Child Component</a></li>
+    <li><a (click)="scrollTo('innerchild')">Inner Child Component</a></li>
+  </ul>
+</div>
+
+<div class="main-content">
+  <app-child #child></app-child>
+</div>
+
+<router-outlet></router-outlet>

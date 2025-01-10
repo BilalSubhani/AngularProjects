@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.field {
+    margin: 20px 0;
+}
+
+h1, p, button {
+    cursor: pointer;
+}
+
+textarea, input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+.container {
+    height: 1500px;
+    background: linear-gradient(to bottom, #f8f9fa, #dee2e6);
+}

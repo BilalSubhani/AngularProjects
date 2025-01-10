@@ -1,0 +1,37 @@
+<div class="container" id="child"> 
+  <div *ngFor="let field of fields" class="field">
+    <h1 *ngIf="field.type === 'heading' && !field.isEditing" (click)="enableEditing(field)">
+      {{ field.value }}
+    </h1>
+    <input
+      *ngIf="field.type === 'heading' && field.isEditing"
+      type="text"
+      [(ngModel)]="field.value"
+      (blur)="saveEditing(field, $event)"
+      (keyup)="saveEditing(field, $event)"
+    />
+
+    <p *ngIf="field.type === 'paragraph' && !field.isEditing" (click)="enableEditing(field)">
+      {{ field.value }}
+    </p>
+    <textarea
+      *ngIf="field.type === 'paragraph' && field.isEditing"
+      [(ngModel)]="field.value"
+      (blur)="saveEditing(field, $event)"
+      (keyup.enter)="saveEditing(field, $event)"
+    ></textarea>
+
+    <button *ngIf="field.type === 'button' && !field.isEditing" (click)="enableEditing(field)">
+      {{ field.value }}
+    </button>
+    <input
+      *ngIf="field.type === 'button' && field.isEditing"
+      type="text"
+      [(ngModel)]="field.value"
+      (blur)="saveEditing(field, $event)"
+      (keyup)="saveEditing(field, $event)"
+    />
+  </div>
+</div>
+
+<app-innerchild />

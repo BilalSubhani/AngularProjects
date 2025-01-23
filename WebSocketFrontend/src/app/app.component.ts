@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { io } from 'socket.io-client'; 
 import { ChildComponent } from './child/child.component';
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   title = 'WebSocketFrontend';
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor() {}
 
   ngOnInit(): void {
   }

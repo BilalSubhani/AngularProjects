@@ -1,188 +1,198 @@
 .kanban-board {
-    font-family: 'Inter', system-ui, sans-serif;
-    padding: 16px;
-    background-color: #f8fafc;
-    border-radius: 12px;
-    width: 400px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  }
-  
-  .add-key-section {
-    margin-bottom: 10px;
-  }
-  
-  .add-key-section input {
-    width: calc(100% - 90px);
-    padding: 8px 12px;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    margin-right: 10px;
-    margin-bottom: 5px;
-    transition: border-color 0.2s ease;
-  }
-  
-  .add-key-section input:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgb(59 130 246 / 0.1);
-  }
-  
-  .add-key-section button {
-    width: 80px;
-    padding: 6px;
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-  
-  .add-key-section button:hover {
-    background-color: #2563eb;
-    transform: translateY(-1px);
-  }
-  
-  .columns {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .column {
-    background-color: white;
-    border-radius: 10px;
-    padding: 14px 12px;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
-    border: 1px solid #e2e8f0;
-  }
-  
-  .column-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .key-input {
-    font-size: 12px;
-    font-weight: 600;
-    border: none;
-    outline: none;
-    flex: 1;
-    width: calc(100% - 30px);
-    color: #1e293b;
-  }
-  
-  .delete-key-btn {
-    background-color: #ef4444;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-  }
-  
-  .delete-key-btn:hover {
-    background-color: #dc2626;
-    transform: scale(1.1);
-  }
-  
-  .add-value-section {
-    margin-bottom: 12px;
-  }
-  
-  .add-value-section input {
-    width: calc(100% - 90px);
-    padding: 6px 12px;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    margin-right: 10px;
-    margin-bottom: 5px;
-    transition: border-color 0.2s ease;
-  }
-  
-  .add-value-section input:focus {
-    outline: none;
-    border-color: #22c55e;
-    box-shadow: 0 0 0 2px rgb(34 197 94 / 0.1);
-  }
-  
-  .add-value-section button {
-    width: 80px;
-    padding: 6px;
-    background-color: #22c55e;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-  
-  .add-value-section button:hover {
-    background-color: #16a34a;
-    transform: translateY(-1px);
-  }
-  
-  .card {
-    background-color: #f8fafc;
-    padding: 10px;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: grab;
-    transition: all 0.2s ease;
-  }
-  
-  .card:hover {
-    background-color: #f1f5f9;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
-  }
-  
-  .value-input {
-    border: none;
-    outline: none;
-    flex: 1;
-    width: calc(100% - 30px);
-    color: #475569;
-  }
-  
-  .delete-value-btn {
-    background-color: #ef4444;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-  }
-  
-  .delete-value-btn:hover {
-    background-color: #dc2626;
-    transform: scale(1.1);
-  }
-  
-  .card:active {
-    cursor: grabbing;
-    transform: scale(0.98);
-  }
+  font-family: "Inter", system-ui, sans-serif;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  width: 380px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.add-key-section {
+  margin-bottom: 10px;
+}
+
+.add-key-section input {
+  width: calc(100% - 28px);
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  transition: border-color 0.2s ease;
+}
+
+.add-key-section input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgb(59 130 246 / 0.1);
+}
+
+.add-key-section button {
+  width: 80px;
+  padding: 6px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.add-key-section button:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.columns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.column {
+  background-color: white;
+  border-radius: 10px;
+  padding: 14px 12px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.key-input {
+  width: calc(100% - 90px);
+  padding: 6px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  margin-right: 8px;
+  transition: border-color 0.2s ease;
+}
+.key-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgb(59 130 246 / 0.1);
+}
+
+.delete-key-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.delete-key-btn:hover {
+  background-color: #dc2626;
+  transform: scale(1.1);
+}
+
+.add-value-section {
+  margin-bottom: 12px;
+}
+
+.add-value-section input {
+  width: calc(100% - 28px);
+  padding: 6px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  transition: border-color 0.2s ease;
+}
+
+.add-value-section input:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 2px rgb(34 197 94 / 0.1);
+}
+
+.add-value-section button {
+  width: 80px;
+  padding: 6px;
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.add-value-section button:hover {
+  background-color: #16a34a;
+  transform: translateY(-1px);
+}
+
+.card {
+  background-color: #f8fafc;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  background-color: #f1f5f9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.05);
+}
+
+.value-input {
+  width: calc(100% - 95px);
+  padding: 6px 9px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  margin-right: 8px;
+  transition: border-color 0.2s ease;
+}
+.value-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgb(59 130 246 / 0.1);
+}
+
+.delete-value-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.delete-value-btn:hover {
+  background-color: #dc2626;
+  transform: scale(1.1);
+}
+
+.card:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+}

@@ -17,6 +17,7 @@
           [(ngModel)]="editingKey.key"
           (blur)="saveEditKey()"
           (keyup.enter)="saveEditKey()"
+          (keyup.escape)="cancelEditKey()"
           class="key-input"
         />
         <span
@@ -47,6 +48,7 @@
           [(ngModel)]="editingValue.value"
           (blur)="saveEditValue()"
           (keyup.enter)="saveEditValue()"
+          (keyup.escape)="cancelEditValue()"
           class="value-input"
         />
         <span

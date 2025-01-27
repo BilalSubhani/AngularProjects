@@ -61,6 +61,10 @@ export class KanbanBoardComponent {
     }
   }
 
+  cancelEditKey() {
+    this.editingKey = { key: '', index: -1 };
+  }
+
   startEditValue(value: string, keyIndex: number, valueIndex: number) {
     this.editingValue = { value, keyIndex, valueIndex };
   }
@@ -76,6 +80,10 @@ export class KanbanBoardComponent {
       ] = this.editingValue.value.trim();
       this.editingValue = { value: '', keyIndex: -1, valueIndex: -1 };
     }
+  }
+
+  cancelEditValue() {
+    this.editingValue = { value: '', keyIndex: -1, valueIndex: -1 };
   }
 
   onDragStart(event: DragEvent, key: string, value: string) {

@@ -1,1 +1,6 @@
-<app-kanban-board /> <router-outlet></router-outlet>
+<app-kanban-board
+  [listItems]="parentListItems"
+  (listItemsChange)="updateListItems($event)"
+></app-kanban-board>
+
+<router-outlet></router-outlet>

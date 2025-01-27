@@ -6,6 +6,16 @@ import { KanbanBoardComponent } from './kanban-board/kanban-board.component';
   selector: 'app-root',
   imports: [RouterOutlet, KanbanBoardComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {}
+export class AppComponent {
+  parentListItems = [
+    { key: 'Use Cases', values: ['E-Commerce', 'Food', 'Flower'] },
+    { key: 'Integration', values: [] },
+    { key: 'Developers', values: ['Documentation', 'Chat Now'] },
+  ];
+
+  updateListItems(updatedListItems: { key: string; values: string[] }[]) {
+    this.parentListItems = [...updatedListItems];
+  }
+}

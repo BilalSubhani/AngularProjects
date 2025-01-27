@@ -1,53 +1,67 @@
-import { FormsModule } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-kanban-board',
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.component.css'],
-  imports: [FormsModule, CommonModule],
+  imports: [CommonModule, FormsModule],
 })
 export class KanbanBoardComponent {
-  listItems = [
-    { key: 'Use Cases', values: ['E-Commerce', 'Food', 'Flower'] },
-    { key: 'Integration', values: [] },
-    { key: 'Developers', values: ['Documentation', 'Chat Now'] },
-  ];
+  @Input() listItems: { key: string; values: string[] }[] = [];
+  @Output() listItemsChange = new EventEmitter<
+    { key: string; values: string[] }[]
+  >();
 
   newKey = '';
   newValue = '';
-  selectedKey = '';
-
   editingKey = { key: '', index: -1 };
   editingValue = { value: '', keyIndex: -1, valueIndex: -1 };
 
+  emitUpdates() {
+    this.listItemsChange.emit([...this.listItems]);
+  }
+
   addKey() {
     if (this.newKey.trim()) {
-      this.listItems.push({ key: this.newKey.trim(), values: [] });
+      this.listItems = [
+        ...this.listItems,
+        { key: this.newKey.trim(), values: [] },
+      ];
       this.newKey = '';
+      this.emitUpdates();
     }
   }
 
   deleteKey(key: string) {
     this.listItems = this.listItems.filter((item) => item.key !== key);
+    this.emitUpdates();
   }
 
   addValue(key: string) {
-    if (this.newValue.trim()) {
-      const item = this.listItems.find((item) => item.key === key);
-      if (item) {
-        item.values.push(this.newValue.trim());
-        this.newValue = '';
+    const updatedList = this.listItems.map((item) => {
+      if (item.key === key && this.newValue.trim()) {
+        return { ...item, values: [...item.values, this.newValue.trim()] };
       }
-    }
+      return item;
+    });
+
+    this.listItems = updatedList;
+    this.newValue = '';
+    this.emitUpdates();
   }
 
   deleteValue(key: string, value: string) {
-    const item = this.listItems.find((item) => item.key === key);
-    if (item) {
-      item.values = item.values.filter((val) => val !== value);
-    }
+    const updatedList = this.listItems.map((item) => {
+      if (item.key === key) {
+        return { ...item, values: item.values.filter((val) => val !== value) };
+      }
+      return item;
+    });
+
+    this.listItems = updatedList;
+    this.emitUpdates();
   }
 
   startEditKey(key: string, index: number) {
@@ -56,8 +70,11 @@ export class KanbanBoardComponent {
 
   saveEditKey() {
     if (this.editingKey.index !== -1 && this.editingKey.key.trim()) {
-      this.listItems[this.editingKey.index].key = this.editingKey.key.trim();
+      const updatedList = [...this.listItems];
+      updatedList[this.editingKey.index].key = this.editingKey.key.trim();
+      this.listItems = updatedList;
       this.editingKey = { key: '', index: -1 };
+      this.emitUpdates();
     }
   }
 
@@ -75,10 +92,13 @@ export class KanbanBoardComponent {
       this.editingValue.valueIndex !== -1 &&
       this.editingValue.value.trim()
     ) {
-      this.listItems[this.editingValue.keyIndex].values[
+      const updatedList = [...this.listItems];
+      updatedList[this.editingValue.keyIndex].values[
         this.editingValue.valueIndex
       ] = this.editingValue.value.trim();
+      this.listItems = updatedList;
       this.editingValue = { value: '', keyIndex: -1, valueIndex: -1 };
+      this.emitUpdates();
     }
   }
 
@@ -104,11 +124,27 @@ export class KanbanBoardComponent {
   }
 
   moveValue(sourceKey: string, value: string, targetKey: string) {
-    const sourceItem = this.listItems.find((item) => item.key === sourceKey);
-    const targetItem = this.listItems.find((item) => item.key === targetKey);
-    if (sourceItem && targetItem) {
-      sourceItem.values = sourceItem.values.filter((val) => val !== value);
-      targetItem.values.push(value);
-    }
+    const updatedList = this.listItems.map((item) => {
+      if (item.key === sourceKey) {
+        if (sourceKey === targetKey) {
+          const values = [...item.values];
+          const valueIndex = values.indexOf(value);
+          values.splice(valueIndex, 1);
+          values.splice(valueIndex + 1, 0, value);
+          return { ...item, values };
+        } else {
+          return {
+            ...item,
+            values: item.values.filter((val) => val !== value),
+          };
+        }
+      } else if (item.key === targetKey) {
+        return { ...item, values: [...item.values, value] };
+      }
+      return item;
+    });
+
+    this.listItems = updatedList;
+    this.emitUpdates();
   }
 }

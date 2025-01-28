@@ -1,0 +1,60 @@
+<div class="page-container">
+  <div [ngStyle]="divStyle" class="dynamic-container">
+    <ng-container *ngFor="let element of divObject">
+      <ng-container [ngSwitch]="element.tag">
+        <h1
+          *ngSwitchCase="'h1'"
+          [ngStyle]="getElementStyles(element)"
+          class="preview-element"
+        >
+          {{ element.content }}
+        </h1>
+        <h2
+          *ngSwitchCase="'h2'"
+          [ngStyle]="getElementStyles(element)"
+          class="preview-element"
+        >
+          {{ element.content }}
+        </h2>
+        <p
+          *ngSwitchCase="'p'"
+          [ngStyle]="getElementStyles(element)"
+          class="preview-element"
+        >
+          {{ element.content }}
+        </p>
+        <button
+          *ngSwitchCase="'button'"
+          [ngStyle]="getElementStyles(element)"
+          class="preview-button preview-element"
+        >
+          {{ element.content }}
+        </button>
+        <input
+          *ngSwitchCase="'input'"
+          [ngStyle]="getElementStyles(element)"
+          [placeholder]="element.content"
+          class="preview-input preview-element"
+        />
+        <ul
+          *ngSwitchCase="'ul'"
+          [ngStyle]="getElementStyles(element)"
+          class="preview-list preview-element"
+        >
+          <li *ngFor="let item of element.content.split('')">
+            {{ item }}
+          </li>
+        </ul>
+        <ol
+          *ngSwitchCase="'ol'"
+          [ngStyle]="getElementStyles(element)"
+          class="preview-list preview-element"
+        >
+          <li *ngFor="let item of element.content.split('')">
+            {{ item }}
+          </li>
+        </ol>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

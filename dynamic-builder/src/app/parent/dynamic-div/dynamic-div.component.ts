@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 interface ElementTag {
@@ -30,6 +30,7 @@ interface DynamicElement {
 })
 export class DynamicDivComponent {
   @Input() style: any;
+  @Output() dynamicDataEvent = new EventEmitter<any>();
 
   selectedTag: string = '';
   content: string = '';
@@ -93,8 +94,6 @@ export class DynamicDivComponent {
       this.selectedTag = '';
       this.content = '';
     }
-
-    console.log(this.elements);
   }
 
   deleteElement(index: number): void {
@@ -110,5 +109,19 @@ export class DynamicDivComponent {
       fontSize: `${element.fontSize}px`,
       color: element.color,
     };
+  }
+
+  dynamicData: any;
+  saveElements() {
+    this.dynamicData = {
+      divStyle: this.style,
+      divObject: this.elements,
+    };
+
+    this.transmitData();
+  }
+
+  transmitData() {
+    this.dynamicDataEvent.emit(this.dynamicData);
   }
 }

@@ -150,5 +150,6 @@
 </div>
 
 <div class="preview-container">
-  <ng-template #dynamicComponentContainer></ng-template>
+  <ng-template *ngIf="!dataReceived" #dynamicComponentContainer></ng-template>
+  <ng-template *ngIf="dataReceived" #dynamicContainer></ng-template>
 </div>

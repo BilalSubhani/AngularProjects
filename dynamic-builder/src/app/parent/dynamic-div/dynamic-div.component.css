@@ -185,7 +185,6 @@
 .preview-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 2rem;
 }
 
@@ -272,7 +271,6 @@
   background: #dc2626;
 }
 
-/* Preview Elements Styles */
 .preview-element {
   margin: 0;
   transition: all 0.2s;
@@ -302,7 +300,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .page-container {
     grid-template-columns: 1fr;

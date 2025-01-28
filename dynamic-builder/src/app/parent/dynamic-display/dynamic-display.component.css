@@ -1,0 +1,148 @@
+.page-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.dynamic-container {
+  min-width: 100px;
+  min-height: 100px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px;
+  position: relative;
+  overflow: auto;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.preview-element {
+  margin: 0.5rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.preview-element[style*="position: center"] {
+  text-align: center;
+}
+
+.preview-element[style*="position: left"] {
+  text-align: left;
+}
+
+.preview-element[style*="position: right"] {
+  text-align: right;
+}
+
+h1.preview-element {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+h2.preview-element {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.3;
+  font-weight: 500;
+  margin-bottom: 0.5em;
+}
+
+p.preview-element {
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+.preview-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  width: fit-content;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.preview-button:hover {
+  opacity: 0.9;
+}
+
+.preview-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.preview-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.preview-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.preview-list {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.preview-list li {
+  margin: 0.25rem 0;
+  line-height: 1.4;
+}
+
+.preview-element:hover::before {
+  content: "⋮⋮";
+  position: absolute;
+  left: -20px;
+  cursor: move;
+  opacity: 0.3;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .dynamic-container {
+    width: calc(100% - 16px) !important;
+    left: 8px !important;
+    margin: 8px !important;
+  }
+
+  .preview-element {
+    font-size: 14px !important;
+  }
+
+  .preview-button,
+  .preview-input {
+    width: 100% !important;
+  }
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.position-absolute {
+  position: absolute !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.preview-element {
+  animation: fadeIn 0.3s ease-out;
+}

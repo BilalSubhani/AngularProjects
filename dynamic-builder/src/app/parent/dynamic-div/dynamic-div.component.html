@@ -3,6 +3,15 @@
     <div class="panel-header">
       <h2>Element Controls</h2>
       <p class="subtitle">Build your layout by adding elements</p>
+
+      <button
+        class="clear-btn"
+        (click)="saveElements()"
+        *ngIf="elements.length"
+        style="margin-top: 10px; background-color: #32de84; margin-left: 190px"
+      >
+        Save
+      </button>
     </div>
 
     <div class="control-section">

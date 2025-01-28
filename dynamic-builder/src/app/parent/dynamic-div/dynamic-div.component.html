@@ -1,0 +1,182 @@
+<div class="page-container">
+  <div class="control-panel">
+    <div class="panel-header">
+      <h2>Element Controls</h2>
+      <p class="subtitle">Build your layout by adding elements</p>
+    </div>
+
+    <div class="control-section">
+      <label class="control-label">Element Type</label>
+      <select
+        [(ngModel)]="selectedTag"
+        (change)="onTagSelect()"
+        class="control-select"
+      >
+        <option value="" disabled selected>Choose element type</option>
+        <option *ngFor="let tag of availableTags" [value]="tag.value">
+          {{ tag.label }}
+        </option>
+      </select>
+    </div>
+
+    <div class="control-form" *ngIf="selectedTag">
+      <div class="control-section">
+        <label class="control-label">Content</label>
+        <input
+          *ngIf="!isListElement"
+          type="text"
+          [(ngModel)]="content"
+          [placeholder]="getPlaceholder()"
+          class="control-input"
+        />
+        <textarea
+          *ngIf="isListElement"
+          [(ngModel)]="content"
+          placeholder="Enter items (one per line)"
+          rows="4"
+          class="control-textarea"
+        ></textarea>
+      </div>
+
+      <div class="control-section">
+        <label class="control-label">Font Size (px)</label>
+        <div class="font-size-control">
+          <input
+            type="range"
+            [(ngModel)]="fontSize"
+            min="8"
+            max="72"
+            class="range-slider"
+          />
+          <input
+            type="number"
+            [(ngModel)]="fontSize"
+            min="8"
+            max="72"
+            class="number-input"
+          />
+        </div>
+      </div>
+
+      <div class="control-section">
+        <label class="control-label">Color</label>
+        <div class="color-control">
+          <input type="color" [(ngModel)]="color" class="color-picker" />
+          <input
+            type="text"
+            [(ngModel)]="color"
+            class="color-input"
+            placeholder="#000000"
+          />
+        </div>
+      </div>
+
+      <div class="control-section">
+        <label class="control-label">Alignment</label>
+        <div class="alignment-control">
+          <button
+            *ngFor="let pos of alignmentOptions"
+            class="alignment-btn"
+            [class.active]="position === pos.value"
+            (click)="position = pos.value"
+            [title]="pos.label"
+          >
+            <i [class]="pos.icon"></i>
+          </button>
+        </div>
+      </div>
+
+      <button
+        (click)="addElement()"
+        class="add-element-btn"
+        [disabled]="!isValidElement()"
+      >
+        <i class="fas fa-plus"></i>
+        Add Element
+      </button>
+    </div>
+  </div>
+
+  <div class="preview-area">
+    <div class="preview-header">
+      <h2>Preview</h2>
+      <button
+        class="clear-btn"
+        (click)="clearElements()"
+        *ngIf="elements.length"
+      >
+        Clear All
+      </button>
+    </div>
+
+    <div class="preview-content" [ngClass]="{ empty: !elements.length }">
+      <div *ngIf="!elements.length" class="empty-state">
+        <i class="fas fa-layer-group"></i>
+        <p>Select an element type and add it to see the preview here</p>
+      </div>
+
+      <div
+        *ngFor="let element of elements; let i = index"
+        class="element-container"
+        [ngStyle]="{ 'text-align': element.position }"
+      >
+        <div class="element-controls">
+          <button class="delete-btn" (click)="deleteElement(i)" title="Delete">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <ng-container [ngSwitch]="element.tag">
+          <h1
+            *ngSwitchCase="'h1'"
+            [ngStyle]="getElementStyles(element)"
+            class="preview-element"
+          >
+            {{ element.content }}
+          </h1>
+          <h2
+            *ngSwitchCase="'h2'"
+            [ngStyle]="getElementStyles(element)"
+            class="preview-element"
+          >
+            {{ element.content }}
+          </h2>
+          <p
+            *ngSwitchCase="'p'"
+            [ngStyle]="getElementStyles(element)"
+            class="preview-element"
+          >
+            {{ element.content }}
+          </p>
+          <button
+            *ngSwitchCase="'button'"
+            [ngStyle]="getElementStyles(element)"
+            class="preview-button preview-element"
+          >
+            {{ element.content }}
+          </button>
+          <input
+            *ngSwitchCase="'input'"
+            [ngStyle]="getElementStyles(element)"
+            [placeholder]="element.content"
+            class="preview-input preview-element"
+          />
+          <ul
+            *ngSwitchCase="'ul'"
+            [ngStyle]="getElementStyles(element)"
+            class="preview-list preview-element"
+          >
+            <li *ngFor="let item of element.content.split('\n')">{{ item }}</li>
+          </ul>
+          <ol
+            *ngSwitchCase="'ol'"
+            [ngStyle]="getElementStyles(element)"
+            class="preview-list preview-element"
+          >
+            <li *ngFor="let item of element.content.split('\n')">{{ item }}</li>
+          </ol>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

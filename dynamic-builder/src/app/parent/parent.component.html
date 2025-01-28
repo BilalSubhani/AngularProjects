@@ -1,0 +1,154 @@
+<div class="style-controls-container">
+  <div class="style-controls-header">
+    <h2>Style Controls</h2>
+    <button
+      class="create-button"
+      (click)="createDynamicComponent()"
+      [ngClass]="{ pulse: !componentCreated }"
+    >
+      Create Dynamic Div
+    </button>
+  </div>
+
+  <div class="controls-grid">
+    <div class="control-section">
+      <h3>Dimensions</h3>
+      <div class="control-group">
+        <div class="control-item">
+          <label for="width">Width:</label>
+          <div class="input-wrapper">
+            <input
+              id="width"
+              [(ngModel)]="divStyles['width']"
+              (input)="updateStyle('width', divStyles['width'])"
+              placeholder="e.g., 200px"
+            />
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label for="height">Height:</label>
+          <div class="input-wrapper">
+            <input
+              id="height"
+              [(ngModel)]="divStyles['height']"
+              (input)="updateStyle('height', divStyles['height'])"
+              placeholder="e.g., 100px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-section">
+      <h3>Appearance</h3>
+      <div class="control-group">
+        <div class="control-item">
+          <label for="background-color">Background Color:</label>
+          <div class="input-wrapper">
+            <input
+              id="background-color"
+              [(ngModel)]="divStyles['background-color']"
+              (input)="
+                updateStyle('background-color', divStyles['background-color'])
+              "
+              placeholder="e.g., #ff0000"
+            />
+            <input
+              type="color"
+              [ngModel]="divStyles['background-color']"
+              (ngModelChange)="updateStyle('background-color', $event)"
+              class="color-picker"
+            />
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label for="border">Border:</label>
+          <div class="input-wrapper">
+            <input
+              id="border"
+              [(ngModel)]="divStyles['border']"
+              (input)="updateStyle('border', divStyles['border'])"
+              placeholder="e.g., 1px solid #000000"
+            />
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label for="border-radius">Border Radius:</label>
+          <div class="input-wrapper">
+            <input
+              id="border-radius"
+              [(ngModel)]="divStyles['border-radius']"
+              (input)="updateStyle('border-radius', divStyles['border-radius'])"
+              placeholder="e.g., 5px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-section">
+      <h3>Spacing</h3>
+      <div class="control-group">
+        <div class="control-item">
+          <label for="padding">Padding:</label>
+          <div class="input-wrapper">
+            <input
+              id="padding"
+              [(ngModel)]="divStyles['padding']"
+              (input)="updateStyle('padding', divStyles['padding'])"
+              placeholder="e.g., 10px"
+            />
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label for="margin">Margin:</label>
+          <div class="input-wrapper">
+            <input
+              id="margin"
+              [(ngModel)]="divStyles['margin']"
+              (input)="updateStyle('margin', divStyles['margin'])"
+              placeholder="e.g., 10px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-section">
+      <h3>Position</h3>
+      <div class="control-group">
+        <div class="control-item">
+          <label for="top">Top Position:</label>
+          <div class="input-wrapper">
+            <input
+              id="top"
+              [(ngModel)]="divStyles['top']"
+              (input)="updateStyle('top', divStyles['top'])"
+              placeholder="e.g., 0px"
+            />
+          </div>
+        </div>
+
+        <div class="control-item">
+          <label for="left">Left Position:</label>
+          <div class="input-wrapper">
+            <input
+              id="left"
+              [(ngModel)]="divStyles['left']"
+              (input)="updateStyle('left', divStyles['left'])"
+              placeholder="e.g., 0px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="preview-container">
+  <ng-template #dynamicComponentContainer></ng-template>
+</div>

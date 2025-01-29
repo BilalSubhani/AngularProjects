@@ -4,16 +4,28 @@ import {
   ViewContainerRef,
   ComponentFactoryResolver,
 } from '@angular/core';
-import { DynamicDivComponent } from './dynamic-div/dynamic-div.component';
-import { DynamicDisplayComponent } from './dynamic-display/dynamic-display.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+
+import { DynamicDivComponent } from './dynamic-div/dynamic-div.component';
+import { DynamicDisplayComponent } from './dynamic-display/dynamic-display.component';
 
 @Component({
   selector: 'app-parent',
+  standalone: true,
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.css'],
-  imports: [FormsModule, CommonModule],
+  imports: [
+    MatSidenavModule,
+    MatExpansionModule,
+    MatButtonModule,
+    FormsModule,
+    CommonModule,
+  ],
 })
 export class ParentComponent {
   @ViewChild('dynamicComponentContainer', { read: ViewContainerRef })
@@ -22,9 +34,12 @@ export class ParentComponent {
   @ViewChild('dynamicContainer', { read: ViewContainerRef })
   dynamicContainer!: ViewContainerRef;
 
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+
   componentCreated: boolean = false;
   dataReceived: boolean = false;
   dynamicData: any;
+  buttonData: string = 'Create Dynamic Div';
 
   divStyles: { [key: string]: string } = {
     width: '600px',
@@ -76,6 +91,19 @@ export class ParentComponent {
   fetchDynamicData(event: any) {
     this.dataReceived = true;
     this.dynamicData = event;
-    this.createDynamicComponent();
+    if (this.componentCreated) this.buttonData = 'Display Div';
+  }
+
+  isExpanded: { [key: string]: boolean } = {
+    dimensions: false,
+    appearance: false,
+    spacing: false,
+    position: false,
+  };
+
+  toggleSection(section: string): void {
+    Object.keys(this.isExpanded).forEach((key) => {
+      this.isExpanded[key] = key === section ? !this.isExpanded[key] : false;
+    });
   }
 }

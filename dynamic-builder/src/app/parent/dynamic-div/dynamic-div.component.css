@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 2rem;
-  min-height: 100vh;
+  min-height: 80vh;
   background-color: #f8fafc;
   padding: 2rem;
   font-family: Arial, Helvetica, sans-serif;

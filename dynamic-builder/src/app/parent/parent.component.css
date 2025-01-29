@@ -1,24 +1,30 @@
-.style-controls-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.container {
+  display: flex;
+  min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.sidenav {
+  width: 300px;
+  height: 100vh;
+  overflow-y: auto;
+  background: #ffffff;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
 .style-controls-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
 }
 
 .style-controls-header h2 {
   font-size: 1.5rem;
   color: #2d3748;
-  margin: 0;
+  margin: 0 0 1rem 0;
 }
 
 .create-button {
@@ -30,6 +36,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .create-button:hover {
@@ -40,52 +47,54 @@
   animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(66, 153, 225, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(66, 153, 225, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(66, 153, 225, 0);
-  }
-}
-
-.controls-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.controls-accordion {
+  padding: 1rem;
 }
 
 .control-section {
+  margin-bottom: 4px;
   background: #f7fafc;
-  padding: 1.5rem;
   border-radius: 8px;
+  overflow: hidden;
 }
 
-.control-section h3 {
-  font-size: 1.1rem;
+.accordion-header {
+  padding: 0px 15px;
+  font-size: 15px;
   color: #4a5568;
-  margin: 0 0 1rem 0;
+  background: #f7fafc;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header .accordion-icon {
+  color: #718096;
+  font-weight: bold;
 }
 
 .control-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: none;
+  padding: 8px 16px;
+  background: #ffffff;
+}
+
+.control-group.expanded {
+  display: block;
 }
 
 .control-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  margin-bottom: 5px;
 }
 
 .control-item label {
-  font-size: 0.9rem;
+  font-size: 12px;
   color: #718096;
   font-weight: 500;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .input-wrapper {
@@ -94,24 +103,31 @@
   align-items: center;
 }
 
-input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #e2e8f0;
+.input-wrapper input[type="color"] {
+  width: 20%;
+  height: 30px;
   border-radius: 4px;
-  font-size: 0.9rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
-input:focus {
+.input-wrapper input[type="text"] {
+  width: 100%;
+  padding: 7px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper input[type="text"]:focus {
   outline: none;
   border-color: #4299e1;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
 .color-picker {
-  width: 32px;
-  height: 32px;
   padding: 0;
   margin-left: 0.5rem;
   border: none;
@@ -128,28 +144,55 @@ input:focus {
 }
 
 .preview-container {
-  margin: 36px 10px;
+  margin: 0px 10px 0px 310px;
+  flex-grow: 1;
   padding: 2rem;
   background: #f4f4f4;
-  border-radius: 12px;
-  min-height: 300px;
-  position: relative;
+  min-height: 80vh;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(66, 153, 225, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(66, 153, 225, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(66, 153, 225, 0);
+  }
 }
 
 @media (max-width: 768px) {
-  .style-controls-container {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidenav {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .preview-container {
+    margin-left: 0;
     padding: 1rem;
-    margin: 1rem;
   }
 
   .style-controls-header {
-    flex-direction: column;
-    gap: 1rem;
     text-align: center;
   }
 
-  .controls-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .control-section {
+    margin-bottom: 0.5rem;
+  }
+
+  .accordion-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .control-group {
+    padding: 1rem;
   }
 }

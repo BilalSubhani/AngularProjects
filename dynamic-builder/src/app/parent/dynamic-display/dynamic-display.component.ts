@@ -15,7 +15,7 @@ export class DynamicDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data) {
-      console.log('DynamicDisplayComponent initialized with data:', this.data);
+      //console.log('DynamicDisplayComponent initialized with data:', this.data);
       this.divStyle = this.data.divStyle;
       this.divObject = this.data.divObject;
     } else {
@@ -24,10 +24,17 @@ export class DynamicDisplayComponent implements OnInit {
   }
 
   getElementStyles(element: any) {
-    return {
-      fontSize: `${element.fontSize}px`,
-      color: element.color,
-      textAlign: element.position,
-    };
+    if (element.tag !== 'button') {
+      return {
+        fontSize: `${element.fontSize}px`,
+        color: element.color,
+        textAlign: element.position,
+      };
+    } else {
+      return {
+        fontSize: `${element.fontSize}px`,
+        color: element.color,
+      };
+    }
   }
 }

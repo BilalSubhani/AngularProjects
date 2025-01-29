@@ -1,6 +1,9 @@
 <div class="page-container">
   <div [ngStyle]="divStyle" class="dynamic-container">
-    <ng-container *ngFor="let element of divObject">
+    <div
+      *ngFor="let element of divObject"
+      [ngStyle]="{ 'text-align': element.position }"
+    >
       <ng-container [ngSwitch]="element.tag">
         <h1
           *ngSwitchCase="'h1'"
@@ -41,7 +44,7 @@
           [ngStyle]="getElementStyles(element)"
           class="preview-list preview-element"
         >
-          <li *ngFor="let item of element.content.split('')">
+          <li *ngFor="let item of element.content.split('\n')">
             {{ item }}
           </li>
         </ul>
@@ -50,11 +53,11 @@
           [ngStyle]="getElementStyles(element)"
           class="preview-list preview-element"
         >
-          <li *ngFor="let item of element.content.split('')">
+          <li *ngFor="let item of element.content.split('\n')">
             {{ item }}
           </li>
         </ol>
       </ng-container>
-    </ng-container>
+    </div>
   </div>
 </div>

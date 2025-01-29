@@ -55,6 +55,11 @@ export class DynamicDivComponent {
     { value: 'right', label: 'Align Right', icon: 'fas fa-align-right' },
   ];
 
+  divStyle: any;
+  ngOnInit() {
+    this.divStyle = this.style;
+  }
+
   get isListElement(): boolean {
     return this.selectedTag === 'ul' || this.selectedTag === 'ol';
   }
@@ -114,7 +119,7 @@ export class DynamicDivComponent {
   dynamicData: any;
   saveElements() {
     this.dynamicData = {
-      divStyle: this.style,
+      divStyle: this.divStyle,
       divObject: this.elements,
     };
 

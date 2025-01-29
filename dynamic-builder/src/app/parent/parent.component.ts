@@ -10,6 +10,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
+import { CdkDrag } from '@angular/cdk/drag-drop';
 
 import { DynamicDivComponent } from './dynamic-div/dynamic-div.component';
 import { DynamicDisplayComponent } from './dynamic-display/dynamic-display.component';
@@ -39,7 +40,9 @@ export class ParentComponent {
   componentCreated: boolean = false;
   dataReceived: boolean = false;
   dynamicData: any;
-  buttonData: string = 'Create Dynamic Div';
+  buttonData: string = 'New Widget';
+
+  widgetsArray: any[] = [];
 
   divStyles: { [key: string]: string } = {
     width: '600px',
@@ -71,17 +74,28 @@ export class ParentComponent {
         });
       }
     } else {
-      const componentFactory = this.resolver.resolveComponentFactory(
-        DynamicDisplayComponent
-      );
-      if (this.dynamicContainer) {
-        this.dynamicContainer.clear();
-        const componentRef =
-          this.dynamicContainer.createComponent(componentFactory);
-        componentRef.instance.data = this.dynamicData;
-        this.componentCreated = true;
-      }
+      this.widgetsArray.forEach((widgetData) => {
+        this.renderWidgets(widgetData);
+      });
     }
+  }
+
+  renderWidgets(widgetData: any) {
+    const componentFactory = this.resolver.resolveComponentFactory(
+      DynamicDisplayComponent
+    );
+    if (this.dynamicContainer) {
+      const componentRef =
+        this.dynamicContainer.createComponent(componentFactory);
+      componentRef.instance.data = widgetData;
+      this.componentCreated = true;
+    }
+  }
+
+  addNew() {
+    this.buttonData = 'New Widget';
+    this.componentCreated = false;
+    this.dataReceived = false;
   }
 
   updateStyle(property: string, value: string) {
@@ -91,7 +105,8 @@ export class ParentComponent {
   fetchDynamicData(event: any) {
     this.dataReceived = true;
     this.dynamicData = event;
-    if (this.componentCreated) this.buttonData = 'Display Div';
+    if (this.componentCreated) this.buttonData = 'Display all Widgets';
+    this.widgetsArray.push(this.dynamicData);
   }
 
   isExpanded: { [key: string]: boolean } = {

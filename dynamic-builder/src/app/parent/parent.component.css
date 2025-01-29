@@ -2,6 +2,8 @@
   display: flex;
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-y: auto;
+  position: relative;
 }
 
 .sidenav {
@@ -13,6 +15,7 @@
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 10;
 }
 
 .style-controls-header {
@@ -28,15 +31,18 @@
 }
 
 .create-button {
-  padding: 0.75rem 1.5rem;
+  padding: 4px 1rem;
   background: #4299e1;
   color: white;
   border: none;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: normal;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 100%;
+  width: 40%;
+  height: 40px;
+  content: contain;
+  margin-right: 25px;
 }
 
 .create-button:hover {
@@ -148,7 +154,32 @@
   flex-grow: 1;
   padding: 2rem;
   background: #f4f4f4;
-  min-height: 80vh;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.dynamic-content-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.dynamic-content-wrapper ::ng-deep > * {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+}
+
+.draggable-item {
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.draggable-item:active {
+  cursor: grabbing;
 }
 
 @keyframes pulse {
@@ -166,6 +197,7 @@
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
+    overflow: initial;
   }
 
   .sidenav {
@@ -173,11 +205,14 @@
     height: auto;
     position: relative;
     margin-bottom: 1rem;
+    overflow: initial;
   }
 
   .preview-container {
     margin-left: 0;
     padding: 1rem;
+    height: auto;
+    min-height: 50vh;
   }
 
   .style-controls-header {

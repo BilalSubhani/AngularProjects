@@ -9,6 +9,13 @@
       >
         {{ buttonData }}
       </button>
+      <button
+        class="create-button"
+        (click)="addNew()"
+        [ngClass]="{ pulse: componentCreated }"
+      >
+        Add New Widget
+      </button>
     </div>
 
     <div class="controls-accordion">
@@ -189,7 +196,12 @@
   </nav>
 
   <div class="preview-container">
-    <ng-template *ngIf="!dataReceived" #dynamicComponentContainer></ng-template>
-    <ng-template *ngIf="dataReceived" #dynamicContainer></ng-template>
+    <div class="dynamic-content-wrapper">
+      <ng-template
+        *ngIf="!dataReceived"
+        #dynamicComponentContainer
+      ></ng-template>
+      <div *ngIf="dataReceived" #dynamicContainer></div>
+    </div>
   </div>
 </div>

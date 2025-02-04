@@ -1,0 +1,250 @@
+<div class="widget-editor">
+  <h2>Create Widget</h2>
+
+  <div class="tabs">
+    <button
+      type="button"
+      [class.active]="activeTab === 'layout'"
+      (click)="setActiveTab('layout')"
+    >
+      Layout
+    </button>
+    <button
+      type="button"
+      [class.active]="activeTab === 'appearance'"
+      (click)="setActiveTab('appearance')"
+    >
+      Appearance
+    </button>
+    <button
+      type="button"
+      [class.active]="activeTab === 'advanced'"
+      (click)="setActiveTab('advanced')"
+    >
+      Advanced
+    </button>
+  </div>
+
+  <form (ngSubmit)="createWidget()">
+    <div *ngIf="activeTab === 'layout'" class="tab-content">
+      <h3>Layout Settings</h3>
+      <div class="input-group">
+        <label>Margin (px):</label>
+        <div class="four-inputs">
+          <input
+            type="text"
+            [(ngModel)]="layoutSettings.margin.top"
+            name="marginTop"
+            placeholder="Top"
+          />
+          <input
+            type="text"
+            [(ngModel)]="layoutSettings.margin.right"
+            name="marginRight"
+            placeholder="Right"
+          />
+          <input
+            type="text"
+            [(ngModel)]="layoutSettings.margin.bottom"
+            name="marginBottom"
+            placeholder="Bottom"
+          />
+          <input
+            type="text"
+            [(ngModel)]="layoutSettings.margin.left"
+            name="marginLeft"
+            placeholder="Left"
+          />
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Padding (px):</label>
+        <div class="four-inputs">
+          <input
+            type="text"
+            [(ngModel)]="layoutSettings.padding.top"
+            name="paddingTop"
+            placeholder="Top"
+          />
+          <input
+            type="text"
+            [(ngModel)]="layoutSettings.padding.right"
+            name="paddingRight"
+            placeholder="Right"
+          />
+          <input
+            type="text"
+            [(ngModel)]="layoutSettings.padding.bottom"
+            name="paddingBottom"
+            placeholder="Bottom"
+          />
+          <input
+            type="text"
+            [(ngModel)]="layoutSettings.padding.left"
+            name="paddingLeft"
+            placeholder="Left"
+          />
+        </div>
+      </div>
+      <div>
+        <label for="width">Width:</label>
+        <input
+          type="text"
+          id="width"
+          [(ngModel)]="layoutSettings.width"
+          name="width"
+          placeholder="e.g., 300px"
+        />
+      </div>
+      <div>
+        <label for="height">Height:</label>
+        <input
+          type="text"
+          id="height"
+          [(ngModel)]="layoutSettings.height"
+          name="height"
+          placeholder="e.g., auto or 200px"
+        />
+      </div>
+      <div>
+        <label for="position">Position:</label>
+        <input
+          type="text"
+          id="position"
+          [(ngModel)]="layoutSettings.position"
+          name="position"
+          placeholder="e.g., static, relative, absolute"
+        />
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'appearance'" class="tab-content">
+      <h3>Appearance Settings</h3>
+      <div>
+        <label for="backgroundColor">Background Color:</label>
+        <input
+          type="color"
+          id="backgroundColor"
+          [(ngModel)]="appearanceSettings.backgroundColor"
+          name="backgroundColor"
+        />
+      </div>
+      <div>
+        <label for="border">Border:</label>
+        <input
+          type="text"
+          id="border"
+          [(ngModel)]="appearanceSettings.border"
+          name="border"
+          placeholder="e.g., 1px solid #ccc"
+        />
+      </div>
+      <div>
+        <label for="borderRadius">Border Radius:</label>
+        <input
+          type="text"
+          id="borderRadius"
+          [(ngModel)]="appearanceSettings.borderRadius"
+          name="borderRadius"
+          placeholder="e.g., 5px"
+        />
+      </div>
+      <div>
+        <label for="boxShadow">Box Shadow:</label>
+        <input
+          type="text"
+          id="boxShadow"
+          [(ngModel)]="appearanceSettings.boxShadow"
+          name="boxShadow"
+          placeholder="e.g., 0 2px 4px rgba(0,0,0,0.1)"
+        />
+      </div>
+      <div>
+        <label for="fontFamily">Font Family:</label>
+        <input
+          type="text"
+          id="fontFamily"
+          [(ngModel)]="appearanceSettings.fontFamily"
+          name="fontFamily"
+          placeholder="e.g., Arial, sans-serif"
+        />
+      </div>
+      <div>
+        <label for="fontSize">Font Size:</label>
+        <input
+          type="text"
+          id="fontSize"
+          [(ngModel)]="appearanceSettings.fontSize"
+          name="fontSize"
+          placeholder="e.g., 16px"
+        />
+      </div>
+      <div>
+        <label for="color">Text Color:</label>
+        <input
+          type="color"
+          id="color"
+          [(ngModel)]="appearanceSettings.color"
+          name="color"
+        />
+      </div>
+      <div>
+        <label for="textAlign">Text Align:</label>
+        <select
+          id="textAlign"
+          [(ngModel)]="appearanceSettings.textAlign"
+          name="textAlign"
+        >
+          <option value="left">Left</option>
+          <option value="center" selected>Center</option>
+          <option value="right">Right</option>
+        </select>
+      </div>
+      <div>
+        <label for="htmlContent">HTML Content:</label>
+        <textarea
+          id="htmlContent"
+          rows="4"
+          [(ngModel)]="htmlContent"
+          name="htmlContent"
+        ></textarea>
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'advanced'" class="tab-content">
+      <h3>Advanced Settings</h3>
+      <div>
+        <label for="imageUrl">Image URL:</label>
+        <input
+          type="text"
+          id="imageUrl"
+          [(ngModel)]="advancedSettings.imageUrl"
+          name="imageUrl"
+          placeholder="https://example.com/image.jpg"
+        />
+      </div>
+      <div>
+        <label for="videoUrl">Video URL:</label>
+        <input
+          type="text"
+          id="videoUrl"
+          [(ngModel)]="advancedSettings.videoUrl"
+          name="videoUrl"
+          placeholder="https://example.com/video.mp4"
+        />
+      </div>
+      <div>
+        <label for="customCss">Custom CSS:</label>
+        <textarea
+          id="customCss"
+          rows="3"
+          [(ngModel)]="advancedSettings.customCss"
+          name="customCss"
+          placeholder="e.g., opacity: 0.8; transform: rotate(5deg);"
+        ></textarea>
+      </div>
+    </div>
+
+    <button type="submit">Add Widget</button>
+  </form>
+</div>

@@ -13,19 +13,7 @@ export interface Widget {
   selector: 'app-main-layout',
   standalone: true,
   imports: [CommonModule, WidgetEditorComponent, PreviewComponent],
-  template: `
-    <div class="container">
-      <aside class="sidenav">
-        <app-widget-editor
-          (widgetCreated)="onWidgetCreated($event)"
-        ></app-widget-editor>
-      </aside>
-
-      <main class="preview-area">
-        <app-preview [widgets]="widgets"> </app-preview>
-      </main>
-    </div>
-  `,
+  templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css',
 })
 export class MainLayoutComponent {

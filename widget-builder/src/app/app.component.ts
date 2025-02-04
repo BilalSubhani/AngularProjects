@@ -8,6 +8,4 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'widget-builder';
-}
+export class AppComponent {}

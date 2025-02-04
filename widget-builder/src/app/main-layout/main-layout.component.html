@@ -1,0 +1,11 @@
+<div class="container">
+  <aside class="sidenav">
+    <app-widget-editor
+      (widgetCreated)="onWidgetCreated($event)"
+    ></app-widget-editor>
+  </aside>
+
+  <main class="preview-area">
+    <app-preview [widgets]="widgets"> </app-preview>
+  </main>
+</div>

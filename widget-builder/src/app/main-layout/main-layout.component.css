@@ -6,7 +6,7 @@
 .sidenav {
   width: 300px;
   border-right: 1px solid #ccc;
-  padding: 3px 10px 3px 0px;
+  padding: 3px 10px;
   box-sizing: border-box;
   overflow-y: auto;
 }

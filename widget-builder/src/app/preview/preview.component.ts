@@ -1,3 +1,4 @@
+import { Widget } from './../main-layout/main-layout.component';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkDrag } from '@angular/cdk/drag-drop';
@@ -9,12 +10,17 @@ import { CdkDrag } from '@angular/cdk/drag-drop';
   template: `
     <div class="preview-container">
       <div
-        *ngFor="let widget of widgets"
+        *ngFor="let widget of widgets; let i = index"
         [ngStyle]="widget.styles"
         class="widget"
         cdkDragBoundary=".preview-container"
         cdkDrag
       >
+        <div class="element-controls">
+          <button class="delete-btn" (click)="deleteElement(i)" title="Delete">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
         <div [innerHTML]="widget.html"></div>
       </div>
     </div>
@@ -33,8 +39,20 @@ import { CdkDrag } from '@angular/cdk/drag-drop';
         padding: 0.5rem;
         cursor: move;
       }
-      .widget:hover {
-        transform: translateY(-2px);
+      .element-controls {
+        position: absolute;
+      }
+      .delete-btn {
+        padding: 0.25rem;
+        background: #ef4444;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .delete-btn:hover {
+        background: #dc2626;
       }
     `,
   ],
@@ -43,4 +61,8 @@ export class PreviewComponent implements OnChanges {
   @Input() widgets: any[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {}
+
+  deleteElement(index: number) {
+    this.widgets.splice(index, 1);
+  }
 }

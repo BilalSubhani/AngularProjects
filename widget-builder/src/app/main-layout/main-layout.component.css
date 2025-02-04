@@ -13,18 +13,19 @@
   flex: 1;
   padding: 1rem;
   overflow-y: auto;
+  background-color: rgb(229, 229, 229);
 }
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #007bff;
-  border-radius: 10px;
+  background: #6aabf1;
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #007bff;
+  background: #2884e7;
 }

@@ -22,7 +22,7 @@ export interface Widget {
       </aside>
 
       <main class="preview-area">
-        <app-preview [widgets]="widgets"></app-preview>
+        <app-preview [widgets]="widgets"> </app-preview>
       </main>
     </div>
   `,

@@ -14,16 +14,16 @@ export class WidgetEditorComponent {
 
   layoutSettings = {
     margin: {
-      top: '10px',
-      right: '10px',
-      bottom: '10px',
-      left: '10px',
+      top: '10',
+      right: '10',
+      bottom: '10',
+      left: '10',
     },
     padding: {
-      top: '10px',
-      right: '10px',
-      bottom: '10px',
-      left: '10px',
+      top: '10',
+      right: '10',
+      bottom: '10',
+      left: '10',
     },
     width: '300px',
     height: 'auto',
@@ -31,7 +31,7 @@ export class WidgetEditorComponent {
   };
 
   appearanceSettings = {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#f4f4f4',
     border: '1px solid #ccc',
     borderRadius: '5px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
@@ -43,7 +43,7 @@ export class WidgetEditorComponent {
 
   htmlContent: string = `<p>Your widget content here</p>`;
   advancedSettings = {
-    imageUrl: 'https://via.placeholder.com/150',
+    imageUrl: '',
     videoUrl: '',
     customCss: '',
   };
@@ -59,11 +59,11 @@ export class WidgetEditorComponent {
 
     styles[
       'margin'
-    ] = `${this.layoutSettings.margin.top} ${this.layoutSettings.margin.right} ${this.layoutSettings.margin.bottom} ${this.layoutSettings.margin.left}`;
+    ] = `${this.layoutSettings.margin.top}px ${this.layoutSettings.margin.right}px ${this.layoutSettings.margin.bottom}px ${this.layoutSettings.margin.left}px`;
 
     styles[
       'padding'
-    ] = `${this.layoutSettings.padding.top} ${this.layoutSettings.padding.right} ${this.layoutSettings.padding.bottom} ${this.layoutSettings.padding.left}`;
+    ] = `${this.layoutSettings.padding.top}px ${this.layoutSettings.padding.right}px ${this.layoutSettings.padding.bottom}px ${this.layoutSettings.padding.left}px`;
 
     styles['width'] = this.layoutSettings.width;
     if (this.layoutSettings.height) {
@@ -102,16 +102,16 @@ export class WidgetEditorComponent {
   resetForm(): void {
     this.layoutSettings = {
       margin: {
-        top: '10px',
-        right: '10px',
-        bottom: '10px',
-        left: '10px',
+        top: '10',
+        right: '10',
+        bottom: '10',
+        left: '10',
       },
       padding: {
-        top: '10px',
-        right: '10px',
-        bottom: '10px',
-        left: '10px',
+        top: '10',
+        right: '10',
+        bottom: '10',
+        left: '10',
       },
       width: '300px',
       height: 'auto',
@@ -119,7 +119,7 @@ export class WidgetEditorComponent {
     };
 
     this.appearanceSettings = {
-      backgroundColor: '#f9f9f9',
+      backgroundColor: '#f4f4f4',
       border: '1px solid #ccc',
       borderRadius: '5px',
       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
@@ -131,7 +131,7 @@ export class WidgetEditorComponent {
 
     this.htmlContent = `<p>Your widget content here</p>`;
     this.advancedSettings = {
-      imageUrl: 'https://via.placeholder.com/150',
+      imageUrl: '',
       videoUrl: '',
       customCss: '',
     };

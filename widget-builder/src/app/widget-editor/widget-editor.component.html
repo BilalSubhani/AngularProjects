@@ -27,9 +27,8 @@
 
   <form (ngSubmit)="createWidget()">
     <div *ngIf="activeTab === 'layout'" class="tab-content">
-      <h3>Layout Settings</h3>
       <div class="input-group">
-        <label>Margin (px):</label>
+        <label>Margin (px)</label>
         <div class="four-inputs">
           <input
             type="text"
@@ -58,7 +57,7 @@
         </div>
       </div>
       <div class="input-group">
-        <label>Padding (px):</label>
+        <label>Padding (px)</label>
         <div class="four-inputs">
           <input
             type="text"
@@ -87,7 +86,7 @@
         </div>
       </div>
       <div>
-        <label for="width">Width:</label>
+        <label for="width">Width</label>
         <input
           type="text"
           id="width"
@@ -97,7 +96,7 @@
         />
       </div>
       <div>
-        <label for="height">Height:</label>
+        <label for="height">Height</label>
         <input
           type="text"
           id="height"
@@ -107,7 +106,7 @@
         />
       </div>
       <div>
-        <label for="position">Position:</label>
+        <label for="position">Position</label>
         <input
           type="text"
           id="position"
@@ -119,9 +118,10 @@
     </div>
 
     <div *ngIf="activeTab === 'appearance'" class="tab-content">
-      <h3>Appearance Settings</h3>
       <div>
-        <label for="backgroundColor">Background Color:</label>
+        <label for="backgroundColor" style="margin-right: 65px"
+          >Background Color</label
+        >
         <input
           type="color"
           id="backgroundColor"
@@ -130,7 +130,7 @@
         />
       </div>
       <div>
-        <label for="border">Border:</label>
+        <label for="border">Border</label>
         <input
           type="text"
           id="border"
@@ -140,7 +140,7 @@
         />
       </div>
       <div>
-        <label for="borderRadius">Border Radius:</label>
+        <label for="borderRadius">Border Radius</label>
         <input
           type="text"
           id="borderRadius"
@@ -150,7 +150,7 @@
         />
       </div>
       <div>
-        <label for="boxShadow">Box Shadow:</label>
+        <label for="boxShadow">Box Shadow</label>
         <input
           type="text"
           id="boxShadow"
@@ -160,7 +160,7 @@
         />
       </div>
       <div>
-        <label for="fontFamily">Font Family:</label>
+        <label for="fontFamily">Font Family</label>
         <input
           type="text"
           id="fontFamily"
@@ -170,7 +170,7 @@
         />
       </div>
       <div>
-        <label for="fontSize">Font Size:</label>
+        <label for="fontSize">Font Size</label>
         <input
           type="text"
           id="fontSize"
@@ -180,7 +180,7 @@
         />
       </div>
       <div>
-        <label for="color">Text Color:</label>
+        <label for="color" style="margin-right: 105px">Text Color</label>
         <input
           type="color"
           id="color"
@@ -189,7 +189,7 @@
         />
       </div>
       <div>
-        <label for="textAlign">Text Align:</label>
+        <label for="textAlign">Text Align</label>
         <select
           id="textAlign"
           [(ngModel)]="appearanceSettings.textAlign"
@@ -201,7 +201,7 @@
         </select>
       </div>
       <div>
-        <label for="htmlContent">HTML Content:</label>
+        <label for="htmlContent">HTML Content</label>
         <textarea
           id="htmlContent"
           rows="4"
@@ -212,9 +212,8 @@
     </div>
 
     <div *ngIf="activeTab === 'advanced'" class="tab-content">
-      <h3>Advanced Settings</h3>
       <div>
-        <label for="imageUrl">Image URL:</label>
+        <label for="imageUrl">Image URL</label>
         <input
           type="text"
           id="imageUrl"
@@ -224,7 +223,7 @@
         />
       </div>
       <div>
-        <label for="videoUrl">Video URL:</label>
+        <label for="videoUrl">Video URL</label>
         <input
           type="text"
           id="videoUrl"
@@ -234,7 +233,7 @@
         />
       </div>
       <div>
-        <label for="customCss">Custom CSS:</label>
+        <label for="customCss">Custom CSS</label>
         <textarea
           id="customCss"
           rows="3"

@@ -26,26 +26,7 @@ export interface Widget {
       </main>
     </div>
   `,
-  styles: [
-    `
-      .container {
-        display: flex;
-        height: 100vh;
-      }
-      .sidenav {
-        width: 300px;
-        border-right: 1px solid #ccc;
-        padding: 1rem;
-        box-sizing: border-box;
-        overflow-y: auto;
-      }
-      .preview-area {
-        flex: 1;
-        padding: 1rem;
-        overflow-y: auto;
-      }
-    `,
-  ],
+  styleUrl: './main-layout.component.css',
 })
 export class MainLayoutComponent {
   widgets = [] as Widget[];

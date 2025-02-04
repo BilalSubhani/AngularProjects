@@ -33,6 +33,9 @@ import { CdkDrag } from '@angular/cdk/drag-drop';
         padding: 0.5rem;
         cursor: move;
       }
+      .widget:hover {
+        transform: translateY(-2px);
+      }
     `,
   ],
 })

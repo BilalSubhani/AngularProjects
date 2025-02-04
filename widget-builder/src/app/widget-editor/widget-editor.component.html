@@ -119,17 +119,6 @@
 
     <div *ngIf="activeTab === 'appearance'" class="tab-content">
       <div>
-        <label for="backgroundColor" style="margin-right: 65px"
-          >Background Color</label
-        >
-        <input
-          type="color"
-          id="backgroundColor"
-          [(ngModel)]="appearanceSettings.backgroundColor"
-          name="backgroundColor"
-        />
-      </div>
-      <div>
         <label for="border">Border</label>
         <input
           type="text"
@@ -160,6 +149,17 @@
         />
       </div>
       <div>
+        <label for="backgroundColor" style="margin-right: 76px"
+          >Background Color</label
+        >
+        <input
+          type="color"
+          id="backgroundColor"
+          [(ngModel)]="appearanceSettings.backgroundColor"
+          name="backgroundColor"
+        />
+      </div>
+      <div>
         <label for="fontFamily">Font Family</label>
         <input
           type="text"
@@ -180,15 +180,6 @@
         />
       </div>
       <div>
-        <label for="color" style="margin-right: 105px">Text Color</label>
-        <input
-          type="color"
-          id="color"
-          [(ngModel)]="appearanceSettings.color"
-          name="color"
-        />
-      </div>
-      <div>
         <label for="textAlign">Text Align</label>
         <select
           id="textAlign"
@@ -201,10 +192,19 @@
         </select>
       </div>
       <div>
+        <label for="color" style="margin-right: 122px">Text Color</label>
+        <input
+          type="color"
+          id="color"
+          [(ngModel)]="appearanceSettings.color"
+          name="color"
+        />
+      </div>
+      <div>
         <label for="htmlContent">HTML Content</label>
         <textarea
           id="htmlContent"
-          rows="4"
+          rows="8"
           [(ngModel)]="htmlContent"
           name="htmlContent"
         ></textarea>
@@ -236,7 +236,7 @@
         <label for="customCss">Custom CSS</label>
         <textarea
           id="customCss"
-          rows="3"
+          rows="5"
           [(ngModel)]="advancedSettings.customCss"
           name="customCss"
           placeholder="e.g., opacity: 0.8; transform: rotate(5deg);"

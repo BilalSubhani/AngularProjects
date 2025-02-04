@@ -1,0 +1,16 @@
+<div class="preview-container">
+  <div
+    *ngFor="let widget of widgets; let i = index"
+    [ngStyle]="widget.styles"
+    class="widget"
+    cdkDragBoundary=".preview-container"
+    cdkDrag
+  >
+    <div class="element-controls">
+      <button class="delete-btn" (click)="deleteElement(i)" title="Delete">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div [innerHTML]="widget.html"></div>
+  </div>
+</div>
